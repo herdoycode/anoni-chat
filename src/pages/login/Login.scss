@@ -1,0 +1,56 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .box {
+    width: 40rem;
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    form {
+      width: 100%;
+      .input-item {
+        margin-bottom: 2rem;
+        input {
+          width: 100%;
+          padding: 1.5rem;
+          font-size: 1.5rem;
+          outline: none;
+          background: transparent;
+          border: 1px solid var(--border-color);
+          color: var(--color-text);
+          border-radius: 0.5rem;
+        }
+        .danger {
+          margin-top: 0;
+          text-align: left;
+          color: red;
+        }
+      }
+      button {
+        width: 100%;
+        padding: 1.5rem;
+        border: none;
+        background: var(--color-primary);
+        color: #fff;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        border-radius: 0.5rem;
+      }
+    }
+    p {
+      text-align: center;
+      margin-top: 2rem;
+      a {
+        color: var(--color-primary);
+      }
+    }
+    @media screen and (max-width: 768px) {
+      width: 30rem;
+    }
+  }
+}
