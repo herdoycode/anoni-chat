@@ -1,3 +1,3 @@
 import { io } from 'socket.io-client';
-const URL = 'http://localhost:9000';
+const URL = 'https://anoni-chat.onrender.com';
 export const socket = io(URL);
