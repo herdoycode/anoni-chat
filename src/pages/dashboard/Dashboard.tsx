@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Message from "../../entities/Message";
 import { socket } from "../../socket";
 import "./Dashboard.scss";
+import apiClient from "../../services/apiClient";
 
 const Messages = () => {
   const navigate = useNavigate();
@@ -19,6 +20,13 @@ const Messages = () => {
   useEffect(() => {
     if (!token) return navigate("/login");
   }, [token]);
+
+  useEffect(() => {
+    apiClient
+      .get("/anonys")
+      .then((res) => setMessages(res.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     socket.on("getMessage", (message) => setMessages([...messages, message]));
@@ -41,11 +49,11 @@ const Messages = () => {
           {messages?.map((message) => (
             <div
               className={
-                message.sender === user._id ? "message own" : "message"
+                message.senderId === user?._id ? "message own" : "message"
               }
-              key={message.id}
+              key={message._id}
             >
-              <img src={message.avatar} alt="" />
+              <img src={message.senderImg} alt="" />
               <div className="text">
                 <p>{message.text}</p>
               </div>
@@ -70,12 +78,17 @@ const Messages = () => {
               onClick={() => {
                 if (messageRef.current && messageRef.current.value) {
                   const message = {
-                    id: `dd${Date.now()}`,
+                    senderId: user._id,
                     text: messageRef.current.value,
-                    avatar: user.avatar,
-                    sender: user._id,
+                    senderImg: user.avatar,
                   };
-                  socket.emit("sendMessage", message);
+                  apiClient
+                    .post("/anonys", message)
+                    .then((res) => {
+                      socket.emit("sendMessage", res.data);
+                    })
+                    .catch((err) => console.log(err));
+
                   messageRef.current.value = "";
                 }
               }}

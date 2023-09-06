@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import AuthProvider from "./auth/AuthProvider.tsx";
 import router from "./router.tsx";
 import ThemeProvider from "./themeProvider/ThemeProvider.tsx";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.scss";
 
 const queryClient = new QueryClient();

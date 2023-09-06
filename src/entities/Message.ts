@@ -1,6 +1,6 @@
 export default interface Message{
-    id: string;
+    _id: string;
+    senderId: string;
+    senderImg: string;
     text: string;
-    sender: string;
-    avatar: string;
 }
