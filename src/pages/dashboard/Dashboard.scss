@@ -1,18 +1,13 @@
-.messages {
-  height: 88vh;
-  position: relative;
-  .center {
-    position: absolute;
-    top: 0;
-    bottom: 9rem;
+.dashboard-wrapper {
+  .messages {
+    position: fixed;
     width: 100%;
+    bottom: 9rem;
+    height: calc(84vh - 5vh);
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    height: calc(100% - 9rem);
-    padding: 2rem 1rem;
-    overflow: auto;
-    gap: 2rem;
+    padding: 3rem 1rem;
     .message {
       display: flex;
       .text {

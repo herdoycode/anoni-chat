@@ -29,7 +29,9 @@ const Messages = () => {
   }, []);
 
   useEffect(() => {
-    socket.on("getMessage", (message) => setMessages([...messages, message]));
+    socket.on("getMessage", (message: Message) =>
+      setMessages([...messages, message])
+    );
   });
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -44,8 +46,8 @@ const Messages = () => {
   return (
     <>
       <Navbar />
-      <div className="messages">
-        <div className="center">
+      <div className="dashboard-wrapper">
+        <div className="messages">
           {messages?.map((message) => (
             <div
               className={
