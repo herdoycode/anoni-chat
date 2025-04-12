@@ -1,7 +1,7 @@
 import axios from "axios";
 const token = localStorage.getItem("token");
 
-const url = "https://chat-api-node.onrender.com/api";
+const url = "https://sea-turtle-app-3i9d4.ondigitalocean.app/api";
 
 export default axios.create({
   baseURL: url,
